@@ -21,7 +21,7 @@ export default function AccountMenu() {
         <Menu.Target>
           <UnstyledButton className="w-full text-black flex items-center space-x-2">
             <Avatar
-              color="blue"
+              color="green"
               variant="filled"
               src={user?.photoURL}
               radius="xl"
