@@ -8,4 +8,5 @@ export interface User {
   profilePhotoUrl?: string;
   createdAt?: string;
   updatedAt?: string;
+  savedPlants?: string[];
 }
