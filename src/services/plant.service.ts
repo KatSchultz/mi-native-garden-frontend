@@ -9,7 +9,7 @@ interface PlantUpdateParams {
 }
 
 export async function getPlants() {
-  const response = await api.get<Plant>("/plants");
+  const response = await api.get<Plant[]>("/plants");
   return response.data;
 }
 
