@@ -13,6 +13,15 @@ export async function getPlants() {
   return response.data;
 }
 
+export async function getPlantsByCriteria(sunInput = true) {
+  const response = await api.get<Plant[]>(`/plants?`, {
+    params: {
+      sunInput,
+    },
+  });
+  return response.data;
+}
+
 export async function getPlant(id: string) {
   const response = await api.get<Plant>(`/plants/${id}`);
   return response.data;
