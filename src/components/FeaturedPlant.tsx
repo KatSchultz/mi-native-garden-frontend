@@ -39,10 +39,8 @@ export default function FeaturedPlant() {
 
   return (
     <div>
-      <div>Today's Featured Plant</div>
-      {/* <div>
-        <h2>{plant?.name_common}</h2>
-      </div>
+      <div>Featured Plant</div>
+      {/* <div>{plant.name_common && <h2>{plant?.name_common}</h2>}</div>
       <button onClick={displayRandomPlant}>Get Plants</button> */}
       <PlantDisplay plant={plant} />
     </div>

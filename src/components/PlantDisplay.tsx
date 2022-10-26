@@ -1,4 +1,3 @@
-import React from "react";
 import { Plant } from "../types/plant.types";
 import { Card, Image, Group } from "@mantine/core";
 
@@ -31,21 +30,24 @@ export default function PlantDisplay({ plant }: Props) {
               </p>
             </div>
           )}
-          <div className="plant-details">
-            <div className="sun">
+          <div className="plant-details p-2 flex flex-col object-fill justify-around">
+            <div className="sun flex items-center justify-between">
               <h2 className="text-lg underline">Sun</h2>
               {plant.sun.full && <p>Full</p>}
               {plant.sun.part && <p>Part</p>}
               {plant.sun.shade && <p>Shade</p>}
             </div>
-            <div className="moisture">
+            <div className="moisture flex justify-between">
               <h2 className="text-lg underline">Moisture</h2>
+              {plant.moisture.dry && <p>Dry</p>}
+              {plant.moisture.ave && <p>Average</p>}
+              {plant.moisture.wet && <p>Wet</p>}
             </div>
-            <div className="color">
+            <div className="color flex justify-between">
               <h2 className="text-lg underline">Color</h2>
               <p>{plant.flower_color}</p>
             </div>
-            <div className="height">
+            <div className="height flex justify-between">
               <h2 className="text-lg underline">Height (inches)</h2>
               <p>
                 {plant.height.min}-{plant.height.max}
