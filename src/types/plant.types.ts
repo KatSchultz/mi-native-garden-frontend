@@ -4,14 +4,16 @@ export interface Plant {
   name_scientific: string;
   name_common: string;
   flower_color: string;
-  sun_full: boolean;
-  sun_part: boolean;
-  sun_shd: boolean;
-  height: string;
-  moisture_dry: boolean;
-  moisture_ave: boolean;
-  moisture_wet: boolean;
-  soil_clay: boolean;
-  soil_sand: boolean;
-  img_url: string;
+  sun: { full: boolean; part: boolean; shade: boolean };
+  height: {
+    min: number;
+    max: number;
+  };
+  moisture: {
+    dry: boolean;
+    ave: boolean;
+    wet: boolean;
+  };
+  soil?: { clay: boolean; sand: boolean };
+  img: { url: string; credit: string };
 }
