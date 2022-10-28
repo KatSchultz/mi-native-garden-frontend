@@ -1,39 +1,51 @@
 import { setServers } from "dns";
 import React, { useEffect, useState } from "react";
 import { getPlantsByCriteria } from "../services/plant.service";
+import { Filter } from "../types/filter.types";
 import { Plant } from "../types/plant.types";
 import PlantDisplay from "./PlantDisplay";
 import SearchResultDisplay from "./SearchResultDisplay";
 
 export default function SearchForm() {
-  const [userInput, setUserInput] = useState(true);
+  const [userInput, setUserInput] = useState<Filter>({
+    shade: "",
+    sun_full: "",
+    sun_part: "",
+    moisture_wet: "",
+  });
+  const [searchInput, setSearchInput] = useState({
+    shade: "",
+    sun_full: "",
+    sun_part: "",
+    moisture_wet: "",
+  });
   const [searchPlants, setSearchPlants] = useState<Plant[]>([]);
-  // maybe make sun choice into checkbox
-
-  useEffect(() => {
-    getPlantsByCriteria(userInput).then((response) => {
-      setSearchPlants(response);
-    });
-  }, [userInput]);
-  // NEED TO MAKE USEEFFECT DEPENDENT ON A STATE THAT CHANGES WITH SUBMIT BUTTON
-  // CURRENTLY UPDATES IMMEDIATELY WHEN I CHANGE STATE OF USER INPUT
-  // ADD MORE USER INPUTS
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    console.log("change noted");
     if (e.target.checked) {
-      setUserInput(true);
+      setUserInput({ ...userInput, ...{ [e.target.name]: e.target.checked } });
     } else {
-      setUserInput(false);
+      setUserInput({ ...userInput, ...{ [e.target.name]: "" } });
     }
+    // if (e.target.checked) {
+    //   setUserInput({ ...userInput, shade: "true" });
+    // } else {
+    //   setUserInput({ ...userInput, shade: "false" });
+    // }
+    // debugger;
+    console.log(userInput);
   }
 
   function submitHandler(e: React.FormEvent) {
     e.preventDefault();
 
+    setSearchInput(userInput);
     getPlantsByCriteria(userInput).then((response) => {
       setSearchPlants(response);
     });
-    console.log("User input: ", userInput);
+    console.log("search button clicked UserInput: ", userInput);
+    // console.log("User input: ", userInput);
     // debugger;
     console.log(searchPlants);
   }
@@ -53,6 +65,24 @@ export default function SearchForm() {
             onChange={handleChange}
           />
           <label htmlFor="shade">Shade</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="sun_part"
+            name="sun_part"
+            onChange={handleChange}
+          />
+          <label htmlFor="sun_part">Part Sun</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="sun_full"
+            name="sun_full"
+            onChange={handleChange}
+          />
+          <label htmlFor="sun_full">Full Sun</label>
         </div>
         <button>Search</button>
       </form>

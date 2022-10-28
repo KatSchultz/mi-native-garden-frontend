@@ -1,4 +1,5 @@
 import { api } from "../libs/axios";
+import { Filter } from "../types/filter.types";
 import { Plant } from "../types/plant.types";
 
 //NEED TO SET UP A SEARCH FUNCTION WITH QUERY PARAMS
@@ -13,10 +14,18 @@ export async function getPlants() {
   return response.data;
 }
 
-export async function getPlantsByCriteria(shade: boolean) {
+export async function getPlantsByCriteria({
+  shade = "",
+  sun_part = "",
+  sun_full = "",
+  moisture_wet = "",
+}: Filter) {
   const response = await api.get<Plant[]>(`/plants/search/?`, {
     params: {
       shade: shade,
+      sun_part,
+      sun_full,
+      moisture_wet,
     },
   });
   return response.data;
