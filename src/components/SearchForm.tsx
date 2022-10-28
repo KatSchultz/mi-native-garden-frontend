@@ -2,17 +2,22 @@ import { setServers } from "dns";
 import React, { useEffect, useState } from "react";
 import { getPlantsByCriteria } from "../services/plant.service";
 import { Plant } from "../types/plant.types";
+import PlantDisplay from "./PlantDisplay";
+import SearchResultDisplay from "./SearchResultDisplay";
 
 export default function SearchForm() {
   const [userInput, setUserInput] = useState(true);
   const [searchPlants, setSearchPlants] = useState<Plant[]>([]);
   // maybe make sun choice into checkbox
 
-  //MIGHT NEED TO USE USE EFFECT TO PREVENT NEED TO SUBMIT TWICE
-
-  //   useEffect(()=>{
-
-  //   })
+  useEffect(() => {
+    getPlantsByCriteria(userInput).then((response) => {
+      setSearchPlants(response);
+    });
+  }, [userInput]);
+  // NEED TO MAKE USEEFFECT DEPENDENT ON A STATE THAT CHANGES WITH SUBMIT BUTTON
+  // CURRENTLY UPDATES IMMEDIATELY WHEN I CHANGE STATE OF USER INPUT
+  // ADD MORE USER INPUTS
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.checked) {
@@ -51,6 +56,9 @@ export default function SearchForm() {
         </div>
         <button>Search</button>
       </form>
+      {searchPlants.map((plant) => (
+        <SearchResultDisplay plant={plant} key={plant._id} />
+      ))}
     </div>
   );
 }
