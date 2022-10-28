@@ -13,10 +13,10 @@ export async function getPlants() {
   return response.data;
 }
 
-export async function getPlantsByCriteria(sunInput = true) {
-  const response = await api.get<Plant[]>(`/plants?`, {
+export async function getPlantsByCriteria(shade: boolean) {
+  const response = await api.get<Plant[]>(`/plants/search/?`, {
     params: {
-      sunInput,
+      shade: shade,
     },
   });
   return response.data;

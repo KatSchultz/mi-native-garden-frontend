@@ -1,5 +1,5 @@
 import { setServers } from "dns";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getPlantsByCriteria } from "../services/plant.service";
 import { Plant } from "../types/plant.types";
 
@@ -7,6 +7,12 @@ export default function SearchForm() {
   const [userInput, setUserInput] = useState(true);
   const [searchPlants, setSearchPlants] = useState<Plant[]>([]);
   // maybe make sun choice into checkbox
+
+  //MIGHT NEED TO USE USE EFFECT TO PREVENT NEED TO SUBMIT TWICE
+
+  //   useEffect(()=>{
+
+  //   })
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.checked) {
@@ -22,7 +28,8 @@ export default function SearchForm() {
     getPlantsByCriteria(userInput).then((response) => {
       setSearchPlants(response);
     });
-    console.log(userInput);
+    console.log("User input: ", userInput);
+    // debugger;
     console.log(searchPlants);
   }
 
