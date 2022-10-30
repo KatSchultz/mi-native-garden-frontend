@@ -1,3 +1,4 @@
+import { Button, Checkbox, FormControlLabel, FormGroup } from "@mui/material";
 import { setServers } from "dns";
 import React, { useEffect, useState } from "react";
 import { getPlantsByCriteria } from "../services/plant.service";
@@ -53,20 +54,34 @@ export default function SearchForm() {
   return (
     <div>
       <h2>Search for a native plant that fits your garden</h2>
-      <form onSubmit={submitHandler}>
+      <form>
         <label htmlFor="sun" className="pr-2">
           Sun
         </label>
         <div>
-          <input
+          <FormGroup className="w-1/2">
+            <FormControlLabel
+              control={<Checkbox onChange={handleChange} name="shade" />}
+              label="Shade"
+            />
+            <FormControlLabel
+              control={<Checkbox onChange={handleChange} name="sun_part" />}
+              label="Part Sun"
+            />
+            <FormControlLabel
+              control={<Checkbox onChange={handleChange} name="sun_full" />}
+              label="Full Sun"
+            />
+          </FormGroup>
+          {/* <input
             type="checkbox"
             id="shade"
             name="shade"
             onChange={handleChange}
           />
-          <label htmlFor="shade">Shade</label>
+          <label htmlFor="shade">Shade</label> */}
         </div>
-        <div>
+        {/* <div>
           <input
             type="checkbox"
             id="sun_part"
@@ -83,8 +98,11 @@ export default function SearchForm() {
             onChange={handleChange}
           />
           <label htmlFor="sun_full">Full Sun</label>
-        </div>
-        <button>Search</button>
+        </div> */}
+        <Button variant="contained" onClick={submitHandler}>
+          Search
+        </Button>
+        {/* <button>Search</button> */}
       </form>
       {searchPlants.map((plant) => (
         <SearchResultDisplay plant={plant} key={plant._id} />
