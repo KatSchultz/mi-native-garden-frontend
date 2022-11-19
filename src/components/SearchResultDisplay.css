@@ -1,0 +1,12 @@
+.plant-detail-sm {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.sun > * {
+  padding: 1rem;
+}
