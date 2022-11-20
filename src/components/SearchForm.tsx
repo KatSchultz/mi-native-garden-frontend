@@ -13,6 +13,8 @@ export default function SearchForm() {
     sun_full: "",
     sun_part: "",
     moisture_wet: "",
+    moisture_ave: "",
+    moisture_dry: "",
   });
   const [searchInput, setSearchInput] = useState({
     shade: "",
@@ -55,11 +57,12 @@ export default function SearchForm() {
     <div>
       <h2>Search for a native plant that fits your garden</h2>
       <form>
-        <label htmlFor="sun" className="pr-2">
-          Sun
-        </label>
-        <div>
-          {/* <FormGroup className="w-1/2">
+        <div className="sun-input">
+          <label htmlFor="sun" className="pr-2 ">
+            Sun
+          </label>
+          <div>
+            {/* <FormGroup className="w-1/2">
             <FormControlLabel
               control={<Checkbox onChange={handleChange} name="shade" />}
               label="Shade"
@@ -73,31 +76,56 @@ export default function SearchForm() {
               label="Full Sun"
             />
           </FormGroup> */}
-          <input
-            type="checkbox"
-            id="shade"
-            name="shade"
-            onChange={handleChange}
-          />
-          <label htmlFor="shade">Shade</label>
+            <input
+              type="checkbox"
+              id="shade"
+              name="shade"
+              onChange={handleChange}
+            />
+            <label htmlFor="shade">Shade</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="sun_part"
+              name="sun_part"
+              onChange={handleChange}
+            />
+            <label htmlFor="sun_part">Part Sun</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="sun_full"
+              name="sun_full"
+              onChange={handleChange}
+            />
+            <label htmlFor="sun_full">Full Sun</label>
+          </div>
         </div>
-        <div>
+        <div className="moisture-input">
+          <label htmlFor="moisture">Moisture</label>
           <input
             type="checkbox"
-            id="sun_part"
-            name="sun_part"
+            id="moisture_dry"
+            name="moisture_dry"
             onChange={handleChange}
           />
-          <label htmlFor="sun_part">Part Sun</label>
-        </div>
-        <div>
+          <label htmlFor="moisture_dry">Dry</label>
           <input
             type="checkbox"
-            id="sun_full"
-            name="sun_full"
+            id="moisture_ave"
+            name="moisture_ave"
             onChange={handleChange}
           />
-          <label htmlFor="sun_full">Full Sun</label>
+          <label htmlFor="moisture_ave">Average</label>
+          <input
+            type="checkbox"
+            id="moisture_wet"
+            name="moisture_wet"
+            onChange={handleChange}
+          />
+          <label htmlFor="moisture_wet">Wet</label>
         </div>
         <Button variant="contained" onClick={submitHandler}>
           Search

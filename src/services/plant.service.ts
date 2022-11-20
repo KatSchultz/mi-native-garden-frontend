@@ -19,6 +19,8 @@ export async function getPlantsByCriteria({
   sun_part = "",
   sun_full = "",
   moisture_wet = "",
+  moisture_ave = "",
+  moisture_dry = "",
 }: Filter) {
   const response = await api.get<Plant[]>(`/plants/search/?`, {
     params: {
@@ -26,6 +28,8 @@ export async function getPlantsByCriteria({
       sun_part,
       sun_full,
       moisture_wet,
+      moisture_dry,
+      moisture_ave,
     },
   });
   return response.data;
