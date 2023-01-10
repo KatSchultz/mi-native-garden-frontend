@@ -9,7 +9,7 @@ import SearchResultDisplay from "./SearchResultDisplay";
 
 export default function SearchForm() {
   const [userInput, setUserInput] = useState<Filter>({
-    shade: "",
+    sun_shade: "",
     sun_full: "",
     sun_part: "",
     moisture_wet: "",
@@ -17,7 +17,7 @@ export default function SearchForm() {
     moisture_dry: "",
   });
   const [searchInput, setSearchInput] = useState({
-    shade: "",
+    sun_shade: "",
     sun_full: "",
     sun_part: "",
     moisture_wet: "",
@@ -78,11 +78,11 @@ export default function SearchForm() {
           </FormGroup> */}
             <input
               type="checkbox"
-              id="shade"
-              name="shade"
+              id="sun_shade"
+              name="sun_shade"
               onChange={handleChange}
             />
-            <label htmlFor="shade">Shade</label>
+            <label htmlFor="sun_shade">Shade</label>
           </div>
           <div>
             <input
