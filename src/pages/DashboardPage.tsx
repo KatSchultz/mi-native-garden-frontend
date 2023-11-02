@@ -7,7 +7,6 @@ export default function DashboardPage() {
   return (
     <>
       <AppHeader />
-      <SearchForm />
       <FeaturedPlant />
     </>
   );

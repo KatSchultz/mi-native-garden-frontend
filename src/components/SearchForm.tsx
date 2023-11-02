@@ -6,6 +6,7 @@ import { Filter } from "../types/filter.types";
 import { Plant } from "../types/plant.types";
 import PlantDisplay from "./PlantDisplay";
 import SearchResultDisplay from "./SearchResultDisplay";
+import { Title } from "@mantine/core";
 
 export default function SearchForm() {
   const [userInput, setUserInput] = useState<Filter>({
@@ -54,17 +55,17 @@ export default function SearchForm() {
   }
 
   return (
-    <div className="">
-      <h2>Search for a native plant that fits your garden</h2>
-      <form className="flex flex-col md:flex-row bg-white justify-around md:justify-center">
-        <div className="sun-input">
+    <div className=" bg-white ">
+      <Title order={2}>Search for a native plant that fits your garden</Title>
+      <form className="flex flex-col justify-around md:justify-center">
+        <div className="sun-input bg-green-100 m-2 rounded-md my-2 flex flex-col md:flex-row items-center">
           <label
-            className="form-header font-bold text-lg pr-2 w-full md:w-11/12"
+            className="form-header font-bold text-lg pr-2 w-full md:w-1/3 "
             htmlFor="sun"
           >
-            Sun
+            Sun Exposure
           </label>
-          <div className="sun-inputs flex justify-around p-2">
+          <div className="sun-inputs flex justify-around p-2 w-full md:w-2/3">
             {/* <FormGroup className="w-1/2">
             <FormControlLabel
               control={<Checkbox onChange={handleChange} name="shade" />}
@@ -79,83 +80,86 @@ export default function SearchForm() {
               label="Full Sun"
               />
             </FormGroup> */}
-            <div className="p-2">
+            <div className="p-2 flex flex-col">
+              <label className="" htmlFor="sun_full">
+                Full Sun
+              </label>
               <input
                 type="checkbox"
                 id="sun_full"
                 name="sun_full"
                 onChange={handleChange}
               />
-              <label className="pl-2" htmlFor="sun_full">
-                Full Sun
-              </label>
             </div>
-            <div className="p-2">
+            <div className="p-2 flex flex-col">
+              <label className="" htmlFor="sun_part">
+                Part Sun
+              </label>
               <input
                 type="checkbox"
                 id="sun_part"
                 name="sun_part"
                 onChange={handleChange}
               />
-              <label className="pl-2" htmlFor="sun_part">
-                Part Sun
-              </label>
             </div>
-            <div className="p-2">
+            <div className="p-2 flex flex-col">
+              <label className="" htmlFor="sun_shade">
+                Shade
+              </label>
               <input
                 type="checkbox"
                 id="sun_shade"
                 name="sun_shade"
                 onChange={handleChange}
               />
-              <label className="pl-2" htmlFor="sun_shade">
-                Shade
-              </label>
             </div>
           </div>
         </div>
-        <div className="moisture-input ">
-          <label className="form-header font-bold text-lg" htmlFor="moisture">
-            Moisture
+        <div className="moisture-input  bg-green-100 m-2 rounded-md my-2 flex flex-col md:flex-row items-center">
+          <label
+            className="form-header font-bold text-lg md:w-1/3"
+            htmlFor="moisture"
+          >
+            Soil Moisture
           </label>
-          <div className="moisture-inputs flex justify-around p-2">
-            <div className="p-2">
+          <div className="moisture-inputs flex justify-around p-2 w-full md:w-2/3">
+            <div className="p-2 flex flex-col">
+              <label className="" htmlFor="moisture_dry">
+                Dry
+              </label>
               <input
                 type="checkbox"
                 id="moisture_dry"
                 name="moisture_dry"
                 onChange={handleChange}
               />
-              <label className="pl-2" htmlFor="moisture_dry">
-                Dry
-              </label>
             </div>
-            <div className="p-2">
+            <div className="p-2 flex flex-col">
+              <label className="" htmlFor="moisture_ave">
+                Average
+              </label>
               <input
                 type="checkbox"
                 id="moisture_ave"
                 name="moisture_ave"
                 onChange={handleChange}
               />
-              <label className="pl-2" htmlFor="moisture_ave">
-                Average
-              </label>
             </div>
-            <div className="p-2">
+            <div className="p-2 flex flex-col">
+              <label className=" " htmlFor="moisture_wet">
+                Wet
+              </label>
               <input
                 type="checkbox"
                 id="moisture_wet"
                 name="moisture_wet"
                 onChange={handleChange}
               />
-              <label className="pl-2" htmlFor="moisture_wet">
-                Wet
-              </label>
             </div>
           </div>
         </div>
 
-        <Button variant="contained" onClick={submitHandler}>
+        <Button variant="contained" onClick={submitHandler} className="m-2">
           Search
         </Button>
         {/* <button>Search</button> */}

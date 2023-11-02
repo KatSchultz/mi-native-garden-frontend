@@ -6,12 +6,14 @@ import PrivateRoute from "./components/PrivateRoute";
 import ProfilePage from "./pages/ProfilePage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignUpPage";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<DashboardPage />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route
